@@ -1,0 +1,15 @@
+# OS junk files
+[Tt]humbs.db
+*.DS_Store
+*.bak*
+*.tmp
+*.log
+._*
+
+# Node Files
+node_modules/
+
+# WebStorm Files
+.idea/
+
+# Project Files

@@ -1,0 +1,75 @@
+.sutras {
+  font-size: 17px;
+}
+.sutras .line-head,
+.sutras p.volume {
+  font-size: 4px;
+  display: none;
+  font-weight: 300;
+}
+.sutras .line-head + .text:before {
+  content: "|";
+  opacity: 0.4;
+  font-size: 6px;
+}
+.sutras .para-head + .line-head + .text:before {
+  content: "";
+}
+.sutras p.eulo,
+.sutras p.translator {
+  text-align: center;
+}
+.sutras p.eulo-end {
+  text-align: right;
+  color: #999;
+  font-size: 0.9em;
+  user-select: none;
+}
+.sutras p.eulo-end:after {
+  content: " (完)";
+}
+.sutras p.eulo {
+  font-size: 1.6em;
+  font-weight: 700;
+}
+.sutras .translator {
+  margin-bottom: 1.25em;
+}
+.sutras .para-head {
+  margin-left: 2em;
+}
+.sutras .mantra > span:first-child {
+  margin-left: 3em;
+}
+.sutras .mantra > span:first-child:after {
+  content: "“";
+  font-size: 1.6em;
+  opacity: 0.3;
+}
+.sutras .mantra:after {
+  content: "”";
+  font-size: 1.6em;
+  opacity: 0.3;
+}
+.sutras .pu {
+  color: #999;
+  opacity: 0.5;
+}
+.sutras .note {
+  color: #999;
+}
+.sutras .quote {
+  color: #060;
+}
+.sutras .quote .quote {
+  color: #0a0;
+}
+.sutras .text:not(.merged) {
+  padding: 0 2px;
+}
+.sutras span.volume {
+  margin-left: 1em;
+}
+.sutras span.volume:before {
+  content: "No.";
+}

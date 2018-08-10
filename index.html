@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="藏经研阅经文阅读器原型">
+  <meta name="author" content="贤二">
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+  <link rel="shortcut icon" href="images/favicon.ico">
+
+  <title>经文阅读原型</title>
+
+  <!-- Base Css Files -->
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Custom Files -->
+  <link href="css/main.css" rel="stylesheet" type="text/css" />
+  <link href="css/sutras.less" rel="stylesheet/less" type="text/css" />
+  <script src="js/less.min.js"></script>
+  <script src="js/device.js"></script>
+</head>
+
+<body>
+
+<div class="container">
+  <p class="demos">
+    <button class="btn btn-default btn-sm" onclick="load('T01n0051.txt')">T01n0051</button>
+    <button class="btn btn-default btn-sm" onclick="load('T08n0251.txt')">T08n0251</button>
+    <button class="btn btn-default btn-sm" onclick="switchSutrasOption('line-head', 'sutras')">显隐行首</button>
+    <textarea class="form-control" placeholder="CBETA标记文本"></textarea>
+  </p>
+  <div class="sutras" id="sutras"></div>
+</div>
+
+<!-- jQuery  -->
+<script src="js/jquery.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="assets/fastclick/fastclick.js"></script>
+
+<!-- CUSTOM JS -->
+<script>less.watch();</script>
+<script src="js/sutras.js"></script>
+<script>
+  function load(name) {
+    $.get('data/' + name, function(data) {
+      $('textarea').val(data).keyup();
+    });
+  }
+  $('textarea').keyup(function() {
+    parseSutras($(this).val(), 'sutras');
+  });
+</script>
+
+</body>
+</html>

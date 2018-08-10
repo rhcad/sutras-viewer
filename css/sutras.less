@@ -1,0 +1,128 @@
+.sutras {
+  font-size: 17px;
+  line-height: 1.8em;
+  padding: 8px 20px;
+  background-color: #edf7fe;
+
+  a {
+    color: #428bca;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .line-head, p.doc-num {
+    font-size: .6em;
+    display: none;
+    font-weight: 300;
+  }
+  &.show-line-head .line-head {
+    display: inline;
+  }
+  .line-head + .text {
+    &:before {
+      content: "|";
+      opacity: .4;
+      font-size: .6em;
+    }
+  }
+  .para-head + .line-head + .text {
+    &:before {
+      content: "";
+    }
+  }
+  .eulo, .byline, .varga, .other-head {
+    text-align: center;
+  }
+  .translator, .author, .editor, .collector {
+    text-align: right;
+  }
+  p.eulo-end {
+    text-align: right;
+    color: #999;
+    font-size: .9em;
+    user-select: none;
+  }
+  p.eulo {
+    font-size: 1.6em;
+    font-weight: 700;
+  }
+  .translator {
+    margin-bottom: 1.25em;
+  }
+  .para-head {
+    margin-left: 2em;
+  }
+
+  // 咒语
+  .mantra {
+    > span:first-child {
+      margin-left: 3em;
+      &:after {
+        content: "“";
+        font-size: 1.6em;
+        opacity: .3;
+      }
+    }
+    &:after {
+      content: "”";
+      font-size: 1.6em;
+      opacity: .3;
+    }
+  }
+
+  // 标点符号
+  .pu {
+    color: #999;
+    opacity: .8;
+  }
+
+  // 行内注解
+  .note-inline {
+    color: #ab2b96
+  }
+  // 行间注解
+  .note-para, .note-para > .note-inline {
+    color: purple;
+    font-size: .82em;
+  }
+
+  // 设置多级对话引用的样式
+  .quote {
+    color: #060;
+    .quote {
+      color: #0a0;
+    }
+  }
+
+  // 附文
+  .appendix {
+    color: #2b542c;
+  }
+
+  // 分句之间留出微小间距
+  .text:not(.merged) {
+    padding: 0 2px;
+  }
+
+  // 经号合并到经尾后与经尾文字隔开，显示编号前缀
+  span.doc-num {
+    margin-left: 1em;
+    &:before {
+      content: "No.";
+    }
+  }
+
+  // 组合字
+  .cb-char {
+    font-size: .9em;
+  }
+
+  // 注解编号
+  .num-ref {
+    opacity: .4;
+    font-size: .2em;
+  }
+  .desktop & .num-ref:hover {
+    opacity: 1;
+  }
+}
