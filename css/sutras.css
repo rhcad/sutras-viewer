@@ -1,32 +1,48 @@
 .sutras {
   font-size: 17px;
+  line-height: 1.8em;
+  padding: 8px 20px;
+  background-color: #edf7fe;
+}
+.sutras a {
+  color: #428bca;
+  text-decoration: none;
+  cursor: pointer;
 }
 .sutras .line-head,
-.sutras p.volume {
-  font-size: 4px;
+.sutras p.doc-num {
+  font-size: 0.6em;
   display: none;
   font-weight: 300;
+}
+.sutras.show-line-head .line-head {
+  display: inline;
 }
 .sutras .line-head + .text:before {
   content: "|";
   opacity: 0.4;
-  font-size: 6px;
+  font-size: 0.6em;
 }
 .sutras .para-head + .line-head + .text:before {
   content: "";
 }
-.sutras p.eulo,
-.sutras p.translator {
+.sutras .eulo,
+.sutras .byline,
+.sutras .varga,
+.sutras .other-head {
   text-align: center;
+}
+.sutras .translator,
+.sutras .author,
+.sutras .editor,
+.sutras .collector {
+  text-align: right;
 }
 .sutras p.eulo-end {
   text-align: right;
   color: #999;
   font-size: 0.9em;
   user-select: none;
-}
-.sutras p.eulo-end:after {
-  content: " (完)";
 }
 .sutras p.eulo {
   font-size: 1.6em;
@@ -53,10 +69,15 @@
 }
 .sutras .pu {
   color: #999;
-  opacity: 0.5;
+  opacity: 0.8;
 }
-.sutras .note {
-  color: #999;
+.sutras .note-inline {
+  color: #ab2b96;
+}
+.sutras .note-para,
+.sutras .note-para > .note-inline {
+  color: purple;
+  font-size: 0.82em;
 }
 .sutras .quote {
   color: #060;
@@ -64,12 +85,25 @@
 .sutras .quote .quote {
   color: #0a0;
 }
+.sutras .appendix {
+  color: #2b542c;
+}
 .sutras .text:not(.merged) {
   padding: 0 2px;
 }
-.sutras span.volume {
+.sutras span.doc-num {
   margin-left: 1em;
 }
-.sutras span.volume:before {
+.sutras span.doc-num:before {
   content: "No.";
+}
+.sutras .cb-char {
+  font-size: 0.9em;
+}
+.sutras .num-ref {
+  opacity: 0.4;
+  font-size: 0.2em;
+}
+.desktop .sutras .num-ref:hover {
+  opacity: 1;
 }
