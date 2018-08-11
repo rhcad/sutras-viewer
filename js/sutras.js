@@ -4,7 +4,7 @@
 (function(global) {
 
   var signs = {
-    volume: '[A-Z]+\\d+',     // 藏经代码，册号
+    volume: '[A-Z]+\\d+',     // 册别=藏经代码+册号
     docNum: 'n\\d+',          // 经号
     edition: '[A-Za-z_]',     // 别本
     pageNum: 'p\\d+',         // 页号
@@ -62,6 +62,7 @@
   var stack;            // 组合元素的堆栈
   var docNumbers;       // 经号
   var merged;
+  var para;
 
   function pick(text, pattern) {
     return pattern.test(text) ? pattern.exec(text)[0].trim() : '';
@@ -89,8 +90,8 @@
     var b = a && (headFull.indexOf('=') > 0 || !tag.length ||
       canMergePara_(tag, 'mantra') || canMergePara_(tag, 'appendix'));
     var c = b && !re.noMergeWithNext.test(lastParagraph.text());
-    // var d = c && !re.noMergeToPrev.test(content) && !re.newline.test(content);
-    return c;
+    var d = c && !re.noMergeToPrev.test(content);
+    return d;
   }
 
   function getLastIndent(tag, content) {
@@ -102,7 +103,7 @@
     }
   }
 
-  function parsePhrase(content, phrase, para) {
+  function parsePhrase(content, phrase) {
     var index = content.indexOf(phrase);
 
     content = content.substring(index + phrase.length);
@@ -159,14 +160,14 @@
     var rest = pickRest(headFull, head);
     var tag = rest.replace(/#|_|-|\d|║/g, '');
     var indent = /\d$/.test(rest) ? parseInt(rest.substring(rest.length - 1)) : 0;
-    var para, span, phrases, phrase;
+    var span, phrases, phrase;
 
     tag = tagMap[tag] || tag;
-    var oldContent = line.substring(headFull.length);
-    var content = tag === 'r' || 1 ? oldContent : oldContent.trim();
+    var content = line.substring(headFull.length), oldContent = content;
     if (tag !== 'doc-num') {
       content = content.replace(/\(/g, '（').replace(/\)/g, '）');  // 将圆括号改为全角的，适应夹注说明
     }
+    content = content.replace(/\s+/g, '　');
     indent = getLastIndent(tag, content) || indent;
     merged = canMergePara(tag, content, headFull) && rest.indexOf('P') < 0
       && !re.headMultiSpace.test(oldContent) && !re.headMultiSpace.test(lastContent);

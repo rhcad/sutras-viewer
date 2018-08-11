@@ -18,13 +18,8 @@
 .sutras.show-line-head .line-head {
   display: inline;
 }
-.sutras .line-head + .text:before {
-  content: "|";
-  opacity: 0.4;
-  font-size: 0.6em;
-}
-.sutras .para-head + .line-head + .text:before {
-  content: "";
+.sutras .para-head {
+  margin-left: 2em;
 }
 .sutras .eulo,
 .sutras .byline,
@@ -32,16 +27,36 @@
 .sutras .other-head {
   text-align: center;
 }
+.sutras .eulo .para-head,
+.sutras .byline .para-head,
+.sutras .varga .para-head,
+.sutras .other-head .para-head {
+  margin-left: 0;
+}
 .sutras .translator,
 .sutras .author,
 .sutras .editor,
 .sutras .collector {
   text-align: right;
 }
+.sutras .translator .para-head,
+.sutras .author .para-head,
+.sutras .editor .para-head,
+.sutras .collector .para-head {
+  margin-left: 0;
+}
 .sutras p.eulo-end {
   text-align: right;
   color: #999;
   font-size: 0.9em;
+}
+.sutras p.eulo-end .para-head {
+  margin-left: 0;
+}
+.sutras p.eulo-end {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
   user-select: none;
 }
 .sutras p.eulo {
@@ -50,9 +65,6 @@
 }
 .sutras .translator {
   margin-bottom: 1.25em;
-}
-.sutras .para-head {
-  margin-left: 2em;
 }
 .sutras .mantra > span:first-child {
   margin-left: 3em;
@@ -93,6 +105,7 @@
 }
 .sutras span.doc-num {
   margin-left: 1em;
+  font-size: 0.8em;
 }
 .sutras span.doc-num:before {
   content: "No.";
@@ -102,7 +115,6 @@
 }
 .sutras .num-ref {
   opacity: 0.4;
-  font-size: 0.2em;
 }
 .desktop .sutras .num-ref:hover {
   opacity: 1;

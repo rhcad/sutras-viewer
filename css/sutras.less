@@ -18,39 +18,44 @@
   &.show-line-head .line-head {
     display: inline;
   }
-  .line-head + .text {
-    &:before {
-      content: "|";
-      opacity: .4;
-      font-size: .6em;
-    }
+
+  .para-head {
+    margin-left: 2em;
   }
-  .para-head + .line-head + .text {
-    &:before {
-      content: "";
-    }
-  }
+
   .eulo, .byline, .varga, .other-head {
     text-align: center;
+    .para-head {
+      margin-left: 0;
+    }
   }
   .translator, .author, .editor, .collector {
     text-align: right;
+    .para-head {
+      margin-left: 0;
+    }
   }
   p.eulo-end {
     text-align: right;
     color: #999;
     font-size: .9em;
+    .para-head {
+      margin-left: 0;
+    }
+  }
+  p.eulo-end {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
     user-select: none;
   }
+
   p.eulo {
     font-size: 1.6em;
     font-weight: 700;
   }
   .translator {
     margin-bottom: 1.25em;
-  }
-  .para-head {
-    margin-left: 2em;
   }
 
   // 咒语
@@ -107,6 +112,7 @@
   // 经号合并到经尾后与经尾文字隔开，显示编号前缀
   span.doc-num {
     margin-left: 1em;
+    font-size: .8em;
     &:before {
       content: "No.";
     }
@@ -120,7 +126,6 @@
   // 注解编号
   .num-ref {
     opacity: .4;
-    font-size: .2em;
   }
   .desktop & .num-ref:hover {
     opacity: 1;
