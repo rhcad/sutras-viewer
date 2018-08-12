@@ -27,7 +27,7 @@
     noMergeWithNext: /[。！？」』：#]$/,
     newline: /<p>|<P>|[ＰPk]/g,
     notePara: /^\s*[（(].+?[）)][。！？]?\s*$/,
-    combineChar: /\[[^\]]+[*/@+?-][^\]]+\]/g,
+    combineChar: /\[[^\]]+[*/@+?-][^\]]+]/g,
     numRef: /\[(\d+|\*)]|<\d+>/g,
     headMultiSpace: /^\s{2}/
   };
@@ -60,9 +60,8 @@
   var lastParagraph;    // 上一个段落 <p>
   var lastContent;      // 上一个段落的内容
   var stack;            // 组合元素的堆栈
-  var docNumbers;       // 经号
-  var merged;
-  var para;
+  var merged;           // 是否合并行内容
+  var para;             // 当前段落元素 <p>
 
   function pick(text, pattern) {
     return pattern.test(text) ? pattern.exec(text)[0].trim() : '';
@@ -88,7 +87,7 @@
   function canMergePara(tag, content, headFull) {
     var a = lastParagraph && content.length;
     var b = a && (headFull.indexOf('=') > 0 || !tag.length ||
-      canMergePara_(tag, 'mantra') || canMergePara_(tag, 'appendix'));
+      canMergePara_(tag, 'mantra') || canMergePara_(tag, 'appendix') || canMergePara_(tag, 'doc-num'));
     var c = b && !re.noMergeWithNext.test(lastParagraph.text());
     var d = c && !re.noMergeToPrev.test(content);
     return d;
@@ -141,7 +140,10 @@
 
   function replaceCombinedChar(m) {
     m = m.replace(/（/g, '(').replace(/）/g, ')');
-    return '<a class="cb-char">' + m + '</a>';
+    if (/\[[\u4e00-\u9fa5]=/.test(m)) {
+      return '<a class="cb-char" cb="' + m + '">' + m[1] + '</a>';
+    }
+    return '<a class="cb-char" cb="">' + m + '</a>';
   }
 
   function replaceNumRef(m) {
@@ -166,8 +168,8 @@
     var content = line.substring(headFull.length), oldContent = content;
     if (tag !== 'doc-num') {
       content = content.replace(/\(/g, '（').replace(/\)/g, '）');  // 将圆括号改为全角的，适应夹注说明
+      content = content.replace(/\s+/g, '　');
     }
-    content = content.replace(/\s+/g, '　');
     indent = getLastIndent(tag, content) || indent;
     merged = canMergePara(tag, content, headFull) && rest.indexOf('P') < 0
       && !re.headMultiSpace.test(oldContent) && !re.headMultiSpace.test(lastContent);
@@ -178,7 +180,7 @@
       span = para.find('.text:last-child');
       span.addClass('merged');
     } else {
-      para = $('<p><span class="para-head"></span></p>');
+      para = $('<p></p>');
       container.append(para);
       para.addClass(tag.length ? tag : 'P');
       if (indent) {
@@ -198,16 +200,9 @@
       return;
     }
 
-    if (tag === 'doc-num') {
+    if (tag === 'doc-num' || tag === 'eulo-end') {
       addSpan(para, 'text', content);
-      docNumbers += content;
-    }
-    else if (tag === 'eulo-end') {
-      addSpan(para, 'text', content);
-      addSpan(para, 'doc-num', docNumbers.replace(/No\.|\s/g, ''));
-      docNumbers = '';
-    }
-    else {
+    } else {
       phrases = content.split(re.separators).filter(function(t) {
         return t.length;
       });
@@ -234,7 +229,6 @@
     container.text('');
     lastParagraph = lastContent = null;
     stack = [];
-    docNumbers = '';
     text.split('\n').forEach(function(line) {
       parseLine(line.trim(), container);
     });

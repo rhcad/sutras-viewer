@@ -1,17 +1,14 @@
+@import "cbetaonline";
+
 .sutras {
   font-size: 17px;
   line-height: 1.8em;
   padding: 8px 20px;
   background-color: #edf7fe;
 
-  a {
-    color: #428bca;
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  .line-head, p.doc-num {
-    font-size: .6em;
+  // 行首 (例如 T01n0051_p0843c16)
+  .line-head {
+    font-size: .5em;
     display: none;
     font-weight: 300;
   }
@@ -19,29 +16,43 @@
     display: inline;
   }
 
-  .para-head {
-    margin-left: 2em;
+  // 段落默认首行缩进2字，居中和居右的不首行缩进
+  p {
+    text-indent: 2em;
+  }
+  .no-indent() {
+    text-indent: 0;
+  }
+
+  // 整段缩进
+  p.indent1 {
+    text-indent: 2em;
+  }
+  p.indent2 {
+    text-indent: 3em;
+  }
+  p.indent3 {
+    text-indent: 4em;
   }
 
   .eulo, .byline, .varga, .other-head {
     text-align: center;
-    .para-head {
-      margin-left: 0;
-    }
+    .no-indent;
   }
   .translator, .author, .editor, .collector {
     text-align: right;
-    .para-head {
-      margin-left: 0;
-    }
+    .no-indent;
+  }
+  p.doc-num {
+    font-size: .8em;
+    .no-indent;
+    color: gray;
   }
   p.eulo-end {
     text-align: right;
     color: #999;
     font-size: .9em;
-    .para-head {
-      margin-left: 0;
-    }
+    .no-indent;
   }
   p.eulo-end {
     -webkit-user-select: none;
@@ -56,6 +67,11 @@
   }
   .translator {
     margin-bottom: 1.25em;
+  }
+
+  p.gatha, p.gatha-end {
+    margin: 0 0 .5em;
+    color: #901b50;
   }
 
   // 咒语
@@ -109,17 +125,8 @@
     padding: 0 2px;
   }
 
-  // 经号合并到经尾后与经尾文字隔开，显示编号前缀
-  span.doc-num {
-    margin-left: 1em;
-    font-size: .8em;
-    &:before {
-      content: "No.";
-    }
-  }
-
   // 组合字
-  .cb-char {
+  .cb-char[cb=""] {
     font-size: .9em;
   }
 

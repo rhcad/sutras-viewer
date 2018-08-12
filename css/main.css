@@ -1,6 +1,15 @@
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%
+  -webkit-tap-highlight-color: transparent;
+}
+
 body {
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   -webkit-font-smoothing: antialiased;
   padding: 10px;
+  margin: 0;
 }
 
 @media (-webkit-min-device-pixel-ratio: 1.5), (min-resolution: 2dppx) {
@@ -12,8 +21,12 @@ body {
   user-select: none;
 }
 
+textarea {
+  margin-top: 4px;
+}
+
 .sutras {
-  margin: 10px 0;
+  margin: 8px 0;
   border: 1px solid #d4d4d4;
   min-height: 200px;
 }

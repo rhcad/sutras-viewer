@@ -1,57 +1,204 @@
+.sutras a {
+  color: #428bca;
+  text-decoration: none;
+  cursor: pointer;
+}
+.sutras a:focus {
+  color: #2a6496;
+  text-decoration: underline;
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.sutras a:active,
+.desktop .sutras a:hover {
+  outline: 0;
+  color: #2a6496;
+  text-decoration: underline;
+}
+.sutras h1 {
+  margin: 0.67em 0;
+  font-size: 2em;
+}
+.sutras .h1,
+.sutras .h2,
+.sutras .h3,
+.sutras .h4,
+.sutras .h5,
+.sutras .h6,
+.sutras h1,
+.sutras h2,
+.sutras h3,
+.sutras h4,
+.sutras h5,
+.sutras h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  line-height: 1.1;
+}
+.sutras .h1 small,
+.sutras .h2 small,
+.sutras .h3 small,
+.sutras .h4 small,
+.sutras .h5 small,
+.sutras .h6 small,
+.sutras h1 small,
+.sutras h2 small,
+.sutras h3 small,
+.sutras h4 small,
+.sutras h5 small,
+.sutras h6 small {
+  font-weight: 400;
+  line-height: 1;
+  color: #999;
+}
+.sutras h1,
+.sutras h2,
+.sutras h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.sutras h4,
+.sutras h5,
+.sutras h6 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.sutras .h1,
+.sutras h1 {
+  font-size: 2.1em;
+}
+.sutras .h2,
+.sutras h2 {
+  font-size: 1.76em;
+}
+.sutras .h3,
+.sutras h3 {
+  font-size: 1.4em;
+}
+.sutras .h4,
+.sutras h4 {
+  font-size: 1.05em;
+}
+.sutras .h5,
+.sutras h5 {
+  font-size: 0.82em;
+}
+.sutras .h6,
+.sutras h6 {
+  font-size: 0.7em;
+}
+.sutras .h1 small,
+.sutras h1 small {
+  font-size: 1.4em;
+}
+.sutras .h2 small,
+.sutras h2 small {
+  font-size: 1.05em;
+}
+.sutras .h3 small,
+.sutras .h4 small,
+.sutras h3 small,
+.sutras h4 small {
+  font-size: 0.82em;
+}
+.sutras hr {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 0;
+  border-top: 1px solid #eee;
+}
+.sutras p {
+  margin: 0 0 1.25em;
+}
+.sutras b,
+.sutras strong {
+  font-weight: 700;
+}
+.sutras small {
+  font-size: 80%;
+}
+.sutras sub,
+.sutras sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+.sutras sup {
+  top: -0.5em;
+}
+.sutras sub {
+  bottom: -0.25em;
+}
+.sutras img {
+  border: 0;
+  vertical-align: middle;
+}
+.sutras figure {
+  margin: 0;
+}
+.sutras ol,
+.sutras ul {
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+.sutras ol ol,
+.sutras ol ul,
+.sutras ul ol,
+.sutras ul ul {
+  margin-bottom: 0;
+}
 .sutras {
   font-size: 17px;
   line-height: 1.8em;
   padding: 8px 20px;
   background-color: #edf7fe;
 }
-.sutras a {
-  color: #428bca;
-  text-decoration: none;
-  cursor: pointer;
-}
-.sutras .line-head,
-.sutras p.doc-num {
-  font-size: 0.6em;
+.sutras .line-head {
+  font-size: 0.5em;
   display: none;
   font-weight: 300;
 }
 .sutras.show-line-head .line-head {
   display: inline;
 }
-.sutras .para-head {
-  margin-left: 2em;
+.sutras p {
+  text-indent: 2em;
+}
+.sutras p.indent1 {
+  text-indent: 2em;
+}
+.sutras p.indent2 {
+  text-indent: 3em;
+}
+.sutras p.indent3 {
+  text-indent: 4em;
 }
 .sutras .eulo,
 .sutras .byline,
 .sutras .varga,
 .sutras .other-head {
   text-align: center;
-}
-.sutras .eulo .para-head,
-.sutras .byline .para-head,
-.sutras .varga .para-head,
-.sutras .other-head .para-head {
-  margin-left: 0;
+  text-indent: 0;
 }
 .sutras .translator,
 .sutras .author,
 .sutras .editor,
 .sutras .collector {
   text-align: right;
+  text-indent: 0;
 }
-.sutras .translator .para-head,
-.sutras .author .para-head,
-.sutras .editor .para-head,
-.sutras .collector .para-head {
-  margin-left: 0;
+.sutras p.doc-num {
+  font-size: 0.8em;
+  text-indent: 0;
+  color: gray;
 }
 .sutras p.eulo-end {
   text-align: right;
   color: #999;
   font-size: 0.9em;
-}
-.sutras p.eulo-end .para-head {
-  margin-left: 0;
+  text-indent: 0;
 }
 .sutras p.eulo-end {
   -webkit-user-select: none;
@@ -65,6 +212,11 @@
 }
 .sutras .translator {
   margin-bottom: 1.25em;
+}
+.sutras p.gatha,
+.sutras p.gatha-end {
+  margin: 0 0 0.5em;
+  color: #901b50;
 }
 .sutras .mantra > span:first-child {
   margin-left: 3em;
@@ -103,14 +255,7 @@
 .sutras .text:not(.merged) {
   padding: 0 2px;
 }
-.sutras span.doc-num {
-  margin-left: 1em;
-  font-size: 0.8em;
-}
-.sutras span.doc-num:before {
-  content: "No.";
-}
-.sutras .cb-char {
+.sutras .cb-char[cb=""] {
   font-size: 0.9em;
 }
 .sutras .num-ref {

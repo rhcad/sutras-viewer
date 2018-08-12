@@ -17,8 +17,8 @@
   <link href="css/bootstrap.min.css" rel="stylesheet" />
 
   <!-- Custom Files -->
-  <link href="css/main.css" rel="stylesheet" type="text/css" />
-  <link href="css/sutras.css" rel="stylesheet" type="text/css" />
+  <link href="css/main.css?v=002" rel="stylesheet" type="text/css" />
+  <link href="css/sutras.css?v=002" rel="stylesheet" type="text/css" />
   <script src="js/device.js"></script>
 </head>
 
@@ -29,7 +29,7 @@
     <button class="btn btn-default btn-sm" onclick="load('T01n0051.txt')">T01n0051</button>
     <button class="btn btn-default btn-sm" onclick="load('T08n0251.txt')">T08n0251</button>
     <button class="btn btn-default btn-sm" onclick="switchSutrasOption('line-head', 'sutras')">显隐行首</button>
-    <textarea class="form-control" placeholder="CBETA标记文本"></textarea>
+    <textarea class="form-control" placeholder="输入CBETA标记文本，或点上面的文件按钮"></textarea>
   </p>
   <div class="sutras" id="sutras"></div>
 </div>
@@ -40,7 +40,7 @@
 <script src="assets/fastclick/fastclick.js"></script>
 
 <!-- CUSTOM JS -->
-<script src="js/sutras.js"></script>
+<script src="js/sutras.js?v=002"></script>
 <script>
   function load(name) {
     $.get('data/' + name, function(data) {
